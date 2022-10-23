@@ -12,7 +12,12 @@
 
 <body style="padding:0px !important; margin:0px !important">
     <?php 
-    include_once("files/header.php")
+    include_once("files/header.php");
+    session_start();
+    if(!$_SESSION['username']){
+        header('location:../login.php');
+
+    }
 ?>
 
     <div class="max-w-full  h-fit flex">
