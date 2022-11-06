@@ -19,7 +19,7 @@
         <img src="img/Logo.jpg">
     </div>
     <div class="container max-w-full bg-gray-600 flex justify-end py-3 text-white">
-        <div>
+        <!-- <div>
 
 
             <div class="dropdown inline-block relative">
@@ -44,12 +44,22 @@
                 </ul>
             </div>
 
-        </div>
+        </div> -->
+
+        <?php 
+            require_once("inc/db_config.php");
+            $sql = "SELECT * FROM category";
+            $result = mysqli_query($conn, $sql);
+            
+        ?>
+
+        <?php 
+            while($row =  mysqli_fetch_assoc($result)){
+        ?>
 
 
-        <span class="pr-4">تاریخی</span>
-        <span class="pr-4">فرهنگی</span>
-        <span class="pr-10">خانه</span>
+            <span class="pr-4"><?= $row["name"] ?></span>
+        <?php } ?>
     </div>
 </body>
 

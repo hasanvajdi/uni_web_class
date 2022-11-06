@@ -17,13 +17,32 @@
 
     <div class="max-w-full  h-fit flex">
         <div class="container w-2/5  ">
-            <div class="container w-5/6 bg-white-500 h-20 mx-auto shadow border mt-5 rounded-md f">
-                <div class="container bg-gray-200 h-1/2 flex items-center justify-center">
-                    header
+            <div class="container w-5/6 bg-white-500 mx-auto shadow border mt-5 rounded-md  h-fit">
+                <div class="container bg-gray-200 h-10 flex items-center justify-center">
+                    دسته بندی موضوعی
                 </div>
 
-                <div class="flex items-center justify-center">
-                    content
+
+                <div class="flex items-center justify-center h-fit py-5">
+
+                <?php 
+                    require_once("inc/db_config.php");
+                    $sql = "SELECT * FROM category";
+                    $result = mysqli_query($conn, $sql);
+                    
+                ?>
+                <ul class="list-disc" style="direction:rtl">
+
+                    <?php 
+                        while($row =  mysqli_fetch_assoc($result)){
+                    ?>
+    
+    
+                        <li class="pr-4"><?= $row["name"] ?></li>
+
+                    <?php } ?>
+                </ul>
+
                 </div>
             </div>
 
