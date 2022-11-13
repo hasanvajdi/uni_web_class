@@ -3,9 +3,11 @@
 session_start();
 $username = $_POST['username'];
 $password = $_POST['password'];
+$remember = @$_POST['remember'];
 
-echo $username;
-echo $password;
+if($remember){
+    setcookie("username", $username, time() + 60 * 60, "/");
+}
 
 require_once('inc/db_config.php');
 
@@ -22,6 +24,7 @@ $myresult = mysqli_query($conn, $mysqlcode);
 
 if($myresult){
     $_SESSION['username'] = $username;
+    
     header('location:admin/index.php');
 
 }else{
