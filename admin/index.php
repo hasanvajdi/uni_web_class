@@ -12,8 +12,8 @@
 
 <body style="padding:0px !important; margin:0px !important">
     <?php 
-    include_once("files/header.php");
     session_start();
+    include_once("files/header.php");
     if(!$_SESSION['username']){
         header('location:../login.php');
 

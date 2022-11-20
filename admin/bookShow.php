@@ -8,6 +8,7 @@
     <script src="sweetalert2.all.min.js"></script>
     <script src="sweetalert2.min.js"></script>
     <link rel="stylesheet" href="sweetalert2.min.css">
+
 </head>
 <body>
 <?php
@@ -18,17 +19,8 @@
 
     }
     require_once("../inc/db_config.php");
-    $sql = "SELECT * FROM  category";
+    $sql = "SELECT * FROM  book order by createdTime desc";
     $result = mysqli_query($conn, $sql);
-
-
-    $status = @$_GET["status"];
-    echo $status;
-    if($status === "deleted"){
-        echo 'successDelete()';
-
-    }
-
 ?>
 
 <table class="w-4/5 mt-12 mx-auto border-2 h-fit rounded" style="direction:rtl;" >
@@ -47,8 +39,8 @@
             <td class="py-4"><?= $row['name'] ?></td>
             <td class="py-4"><?= $row['description'] ?></td>
 
-            <td class="py-4" >
-                <a  onClick="askToDelete(<?= $row['id'] ?>);" class="bg-red-400 py-2 px-4 text-white hover:bg-red-500 rounded-full">
+            <td class="py-4">
+                <a onClick="askToDelete(<?= $row['id'] ?>);" class="bg-red-400 py-2 px-4 text-white hover:bg-red-500 rounded-full">
                 حذف
                 </a>
             </td>
@@ -65,8 +57,8 @@
     <script>
         const askToDelete = (id)=>{
             Swal.fire({
-                title: "حذف دسته بندی",
-                text: "آیا مایل به حذف دسته بندی هستید؟",
+                title: "حذف کتاب",
+                text: "آیا مایل به حذف این کتاب هستید؟",
                 icon:"error",
                 showCancelButton: true,
                 confirmButtonText: "حذف",
@@ -76,26 +68,7 @@
             }).then((result)=>{
                 console.log('ree :', result)
                 if(result.isConfirmed){
-                    location.replace(`categoryDelete.php?id=${id}`)
-                }
-            })
-        }
-
-
-        const successDelete = ()=>{
-            Swal.fire({
-                title: "حذف دسته بندی",
-                text: "آیا مایل به حذف دسته بندی هستید؟",
-                icon:"success",
-                showCancelButton: true,
-                confirmButtonText: "حذف",
-                cancelButtonText: 'لفو',
-                confirmButtonColor: "red",
-                cancelButtonColor: "lightgray",
-            }).then((result)=>{
-                console.log('ree :', result)
-                if(result.isConfirmed){
-                    location.replace(`bookDelete.php?id=${id} `)
+                    location.replace(`bookDelete.php?id=${id}`)
                 }
             })
         }

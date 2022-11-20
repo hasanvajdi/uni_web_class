@@ -28,7 +28,7 @@
                 </label>
                 <input
                     class="shadow  focus:outline-blue-500 appearance-none border border-red text-right rounded w-full py-2 px-3 text-grey-darker mb-3"
-                    name="password" type="رمز عبور" placeholder="* * * * * ">
+                    name="password" type="password" placeholder="* * * * * ">
             </div>
             <div class="mb-6" style="direction:rtl;">
                 <input type="checkbox" id="remember" name="remember" <?php if(isset($_COOKIE["username"])){

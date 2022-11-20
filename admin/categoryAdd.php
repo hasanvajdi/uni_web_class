@@ -14,25 +14,26 @@
 
     }
 ?>
-<h1 class="text-center font-bold text-3xl">افزودن دسته</h1>
     <form action="#" method="POST">
         <div class=" w-full bg-gray-50 shadow-md rounded-xl mx-auto mb-8  p-8">
-            <div class="mb-4 w-100">
+            <h1 class="text-center font-bold text-3xl">افزودن دسته</h1>
+            
+            <div class="mb-4 w-100 mt-5">
                 <label class="block text-grey-darker text-sm font-bold mb-2 text-right" for="username">
                 عنوان دسته
                 </label>
                 <input
                     class="focus:outline-blue-500 shadow appearance-none border rounded w-full py-2 text-right px-3 text-grey-darker"
-                    name="name" type="text" placeholder="نام کاربری">
+                    name="name" type="text" placeholder="عنوان دسته">
             </div>
             <div class="mt-8 w-full">
                 <label class="block text-grey-darker text-sm font-bold mb-2 text-right" for="password">
                      توضیحات
                 </label>
-                <textarea name="description" id=""  rows="10" class="w-full shadow" ></textarea>
+                <textarea name="description" id=""  rows="10" class="focus:outline-blue-500 shadow appearance-none border rounded w-full py-2 text-right px-3 text-grey-darker" ></textarea>
             </div>
-            <button class="bg-blue-500	hover:bg-blue-400 text-white font-bold py-2 px-7 rounded" type="submit">
-                ورود
+            <button class="bg-blue-500	hover:bg-blue-400 text-white font-bold py-2 px-7 rounded mt-5" type="submit">
+                ثبت
             </button>
 
         </div>
@@ -49,5 +50,7 @@
 ?>
 <?php 
     include_once("files/footer.php") ?>
+
+   
 </body>
 </html>
