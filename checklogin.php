@@ -7,6 +7,7 @@ $username = $conn -> real_escape_string($_POST['username']);
 $password = md5($conn -> real_escape_string($_POST['password']));
 $remember = @$_POST['remember'];
 
+
 if($remember){
     setcookie("username", $username, time() + 60 * 60, "/");
 }

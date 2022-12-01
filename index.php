@@ -12,7 +12,13 @@
 
 <body style="padding:0px !important; margin:0px !important">
     <?php 
-    include_once("files/header.php")
+    include_once("files/header.php");
+    //include_once("inc/db_config.php");
+    require_once("inc/db_config.php");
+
+    $sql = "SELECT * FROM book";
+    $bookresult = mysqli_query($conn, $sql);
+    //var_dump(mysqli_fetch_assoc($result));
 ?>
 
     <div class="max-w-full  h-fit flex">
@@ -26,7 +32,6 @@
                 <div class="flex items-center justify-center h-fit py-5">
 
                 <?php 
-                    require_once("inc/db_config.php");
                     $sql = "SELECT * FROM category";
                     $result = mysqli_query($conn, $sql);
                     
@@ -79,25 +84,20 @@
 
         </div>
 
-        <div class="container w-3/5  h-30">
+        <div class="container w-3/5  h-36">
+            <?php 
+                while($row = mysqli_fetch_assoc($bookresult)){
+            ?>
             <div
-                class="container mx-auto bg-white h-20 w-5/6 mt-5 flex items-center justify-end rounded-md	border shadow">
-                <span class="mr-5">Basic Card</span>
+                class="container mx-auto bg-white h-36 w-5/6 mt-5 flex items-center justify-end rounded-md	border shadow">
+                <h1 class="mr-5"><?=$row['name'] ?> </h1>
+                <img src="<?=$row['image'] ?>" alt="عکس" class="h-full">
             </div>
-            <div
-                class="container mx-auto bg-white h-20 w-5/6 mt-5 flex items-center justify-end rounded-md	border shadow">
-                <span class="mr-5">Basic Card</span>
 
-            </div>
-            <div
-                class="container mx-auto bg-white h-20 w-5/6 mt-5 flex items-center justify-end rounded-md	border shadow">
-                <span class="mr-5">Basic Card</span>
-
-            </div>
-            <div
-                class="container mx-auto bg-white h-20 w-5/6 mt-5 flex items-center justify-end rounded-md	border shadow">
-                <span class="mr-5">Basic Card</span>
-            </div>
+            <?php 
+                }
+            ?>
+            
         </div>
     </div>
     <?php 

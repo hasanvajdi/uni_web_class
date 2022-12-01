@@ -26,7 +26,7 @@
         $result = mysqli_query($conn, $sql);      
     ?>
 
-    <form action="#" method="POST">
+    <form action="#" method="POST" enctype="multipart/form-data">
 
         <div class=" w-full bg-gray-50 shadow-md rounded-xl mx-auto mb-8  p-8">
         <h1 class="text-center font-bold text-3xl">افزودن کتاب</h1>
@@ -85,13 +85,17 @@
         require_once("../inc/db_config.php");
         $category= $_POST["category"];
         $name = $_POST["name"];
-        $description = $_POST["description"];
-        //echo $category;
-        //echo $name;
-        //echo $description;
-        $sql = "INSERT INTO book (category, name, description) VALUES ('$category', '$name', '$description')";
-        mysqli_query($conn, $sql);
-        mysqli_close($conn);
+        //var_dump($_FILES);
+            $description = $_POST["description"];
+            $target_dir = "../upload/";
+            $tartget_file = $target_dir . basename($_FILES["image"]["name"]);
+            move_uploaded_file($_FILES["image"]["tmp_name"], $tartget_file);
+            //echo $category;
+            //echo $name;
+            //echo $description;
+            $sql = "INSERT INTO book (category, name, description, image) VALUES ('$category', '$name', '$description', '$tartget_file')";
+            mysqli_query($conn, $sql);
+            mysqli_close($conn);
 
         //echo askToDelete2();
         //echo askToDelete();  

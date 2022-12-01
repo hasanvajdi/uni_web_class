@@ -16,8 +16,11 @@
     include_once("files/header.php");
     if(!$_SESSION['username']){
         header('location:../login.php');
-
     }
+    include_once("../inc/db_config.php");
+
+    $sql = "SELECT * FROM book";
+    $result = mysqli_query($conn, $sql);
 ?>
 
     <div class="max-w-full  h-fit flex">
@@ -65,25 +68,20 @@
 
         </div>
 
-        <div class="container w-3/5  h-30">
+        <div class="container w-3/5  h-36">
+            <?php 
+                while($row = mysqli_fetch_assoc($result)){
+            ?>
             <div
-                class="container mx-auto bg-white h-20 w-5/6 mt-5 flex items-center justify-end rounded-md	border shadow">
-                <span class="mr-5">Basic Card</span>
+                class="container mx-auto bg-white h-36 w-5/6 mt-5 flex items-center justify-end rounded-md	border shadow">
+                <h1 class="mr-5"><?=$row['name'] ?> </h1>
+                <img src="<?=$row['image'] ?>" alt="عکس" class="h-full">
             </div>
-            <div
-                class="container mx-auto bg-white h-20 w-5/6 mt-5 flex items-center justify-end rounded-md	border shadow">
-                <span class="mr-5">Basic Card</span>
 
-            </div>
-            <div
-                class="container mx-auto bg-white h-20 w-5/6 mt-5 flex items-center justify-end rounded-md	border shadow">
-                <span class="mr-5">Basic Card</span>
-
-            </div>
-            <div
-                class="container mx-auto bg-white h-20 w-5/6 mt-5 flex items-center justify-end rounded-md	border shadow">
-                <span class="mr-5">Basic Card</span>
-            </div>
+            <?php 
+                }
+            ?>
+            
         </div>
     </div>
     <?php 
